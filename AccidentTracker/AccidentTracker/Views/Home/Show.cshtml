@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AccidentTracker.Models.DataViewModel>
+
+
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_LayoutShow.cshtml";
+}
+
+Welcome @HttpContext.Current.User.Identity.Name
+
+<hr />
+
+<div>
+
+    @if (Model != null)
+    {
+        <table class="table">
+            <tr>
+                <th>Status</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Map</th>
+                <th>Force</th>
+                <th>Flame</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Status</td>
+                        <td>@item.Latitude</td>
+                        <td>@item.Longitude</td>
+                        <td><a href="http://maps.google.com/maps?q=@item.Latitude,@item.Longitude" target="_blank">@item.Status Coordinates</a></td>
+                        <td>@item.Force</td>
+                        <td>@item.Flame</td>
+                        <td>@item.Date</td>
+                        <td>@item.Time</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+
+</div>
+
+<hr />
+
